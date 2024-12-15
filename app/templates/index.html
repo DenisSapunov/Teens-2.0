@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+            {% for product in context %}
+            <div class="col">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <a href="product/{{ product.id }}"><h4 class="my-0 font-weight-normal">{{ product.name }}</h4></a>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">{{ product.price }}</h1>
+
+
+                        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Подпишитесь бесплатно
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    <h1>
+
+    </h1>
+{% endblock %}
