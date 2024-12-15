@@ -14,7 +14,7 @@ class Product(models.Model):
     price = models.FloatField(null=True)
     izgotovitel_id = models.ForeignKey(Izgotovitel, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True)
+    category = models.ManyToManyField('Category', null=True)
 
     def __str__(self):
         return self.name
