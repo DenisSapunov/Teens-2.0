@@ -1,3 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+
 {% for product in context %}
-    {{ product.name }}
+<a href="/product/{{ product.id }}/"><h4 class="my-0 font-weight-normal">{{ product.name }}</h4></a>
 {% endfor %}
+
+{% endblock  %}
