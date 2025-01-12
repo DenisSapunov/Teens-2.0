@@ -1,4 +1,7 @@
+from django.contrib.auth import login
 from django.shortcuts import render, redirect
+
+from .forms import NewUserForm
 from .models import Product, Category
 
 
@@ -28,3 +31,15 @@ def categories_list(request):
 def search(request):
     products = Product.objects.filter(name__icontains=request.GET['search'])
     return index(request,products)
+
+
+
+def register_request(request):
+	if request.method == "POST":
+		form = NewUserForm(request.POST)
+		if form.is_valid():
+			user = form.save()
+			login(request, user)
+			return redirect("main:homepage")
+	form = NewUserForm()
+	return render (request=request, template_name="registration/registration.html", context={"register_form":form})
