@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
+from rest_framework.viewsets import ModelViewSet
+
 from .models import Product, Category
+from .serializers import ProductSerializer
 
 
 def index(request, products=None):
@@ -28,3 +31,8 @@ def categories_list(request):
 def search(request):
     products = Product.objects.filter(name__icontains=request.GET['search'])
     return index(request,products)
+
+
+class ProductViewSet(ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
