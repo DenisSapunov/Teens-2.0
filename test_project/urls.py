@@ -15,6 +15,7 @@ urlpatterns = [
     path('product', ProductViewSet.as_view(
         {'get': 'list',
          'post': 'create',
-         'patch': 'partial_update'}),
+         'patch': 'partial_update',
+         'delete': 'destroy'}),
          name='index'),
 ]
