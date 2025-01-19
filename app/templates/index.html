@@ -2,6 +2,9 @@
 
 {% block content %}
     <div class="container">
+    {% if user.is_authenticated %}
+        dsfdgf
+    {% endif %}
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
             {% for product in context %}
             <div class="col">
@@ -25,4 +28,8 @@
     <h1>
 
     </h1>
+    <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">logout</button>
+</form>
 {% endblock %}
